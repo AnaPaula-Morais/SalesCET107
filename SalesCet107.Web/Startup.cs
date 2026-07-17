@@ -24,6 +24,9 @@ namespace SalesCet107.Web
 
             services.AddDbContext<DataContext>(o =>
                 o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
         }
 
 

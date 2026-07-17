@@ -1,0 +1,25 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SalesCet107.Web.Data.Entities
+{
+    public class Product
+    {
+        public int id { get; set; }
+
+        [Required]//data Anotation
+        [MaxLength(50, ErrorMessage = "The field {0} can exceed {1} characters length.")]
+        public string Name { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        public decimal Price { get; set; }
+
+        [Display(Name = "Image")]
+        public string ImageUrl { get; set; }
+
+        [Display(Name = "Is Available")]
+        public bool IsAvailable { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
+        public double Stock { get; set; }
+    }
+}
