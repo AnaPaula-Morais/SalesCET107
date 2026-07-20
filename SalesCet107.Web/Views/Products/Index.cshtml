@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Produtos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -20,6 +20,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.LastPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastSale)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsAvailable)
@@ -42,6 +48,12 @@
             <td>
                 @Html.DisplayFor(model => item.ImageUrl)
             </td>
+             <td>
+                 @Html.DisplayFor(model => item.LastPurchase)
+            </td>
+             <td>
+                 @Html.DisplayFor(model => item.LastSale)
+            </td>
             <td>
                 @Html.DisplayFor(model => item.IsAvailable)
             </td>
@@ -49,9 +61,9 @@
                 @Html.DisplayFor(model => item.Stock)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
