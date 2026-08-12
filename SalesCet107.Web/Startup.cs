@@ -26,7 +26,6 @@ namespace SalesCet107.Web
                 o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
         }
 
 
