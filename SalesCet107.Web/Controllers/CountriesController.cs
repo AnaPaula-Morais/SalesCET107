@@ -97,12 +97,21 @@ public class CountriesController : Controller
             return NotFound();
         }
 
+        bool nameExists = await _context.Countries
+            .AnyAsync(c => c.Name.ToLower() == country.Name.ToLower() && c.Id != country.Id);
+
+        if (nameExists)
+        {
+            ModelState.AddModelError("Name", "This country is already registered.");
+        }
+
         if (ModelState.IsValid)
         {
             try
             {
                 _context.Update(country);
                 await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -115,7 +124,6 @@ public class CountriesController : Controller
                     throw;
                 }
             }
-            return RedirectToAction(nameof(Index));
         }
         return View(country);
     }
